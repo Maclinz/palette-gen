@@ -6,6 +6,7 @@ const copy = <i className="far fa-copy"></i>;
 function ListItem({ rgb, hex }) {
   const [copied, setCopied] = useState(false);
 
+  // Copy to clipboard
   const copyToClipboard = (e) => {
     const color = e.target.innerText;
     navigator.clipboard.writeText(color);
