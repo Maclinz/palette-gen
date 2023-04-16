@@ -11,6 +11,7 @@ export default function Home() {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [colorPalette, setColorPalette] = useState(null);
 
+  //functions
   const uploadImage = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -18,6 +19,7 @@ export default function Home() {
     reader.onload = async (event) => {
       const img = new Image();
 
+      // Wait for image to load
       img.onload = () => {
         const colorThief = new ColorThief();
         const colorPalette = colorThief.getPalette(img, 6);
@@ -45,13 +47,16 @@ export default function Home() {
           referrerpolicy="no-referrer"
         />
       </Head>
+
       <header>
         <h1>Palette Gen</h1>
+
         <div className="input">
           <label htmlFor="file">{gallery} Upload Image</label>
           <input type="file" id="file" hidden onChange={uploadImage} />
         </div>
       </header>
+
       <main className={styles.main}>
         <DisplayImage
           uploadedImage={uploadedImage}
